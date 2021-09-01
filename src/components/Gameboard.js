@@ -61,6 +61,7 @@ const  Gameboard =forwardRef((props, ref) =>{
             let tempCard = { ...tempCards[num] };
             tempCard.flip = !cards[num].flip;
             tempCards[num].flip = tempCard.flip;
+            console.log("one card flip");
         }
         
         setCards( tempCards );
@@ -70,7 +71,7 @@ const  Gameboard =forwardRef((props, ref) =>{
     // lock cards
     function cardLock(num){
         let tempCards = [ ...cards ];
-        for(let i=0; i< 2; i++){
+        for(let i=0; i< num.length; i++){
             let tempCard = { ...tempCards[num[i]] };
             tempCard.lock = true;
             tempCards[num[i]].lock = tempCard.lock;
@@ -79,57 +80,60 @@ const  Gameboard =forwardRef((props, ref) =>{
         setboardContent(generateBoard(cards) );
     }
 
-    // check if score can be updated if two cards are flip to true 
-    function checkScore(){
-        const gameRecords = tempRecord.slice(-2);
-        const prevNum = gameRecords[0];
-        const currentNum = gameRecords[1];
-        console.log("check score");
-
-        console.log(cards);
-        if(cards[prevNum].id !== cards[currentNum].id){
-            if(cards[prevNum].name === cards[currentNum].name ){
-                cardLock([prevNum,currentNum]);
-                setTempRecord([]);
-                console.log("clear record");
-                console.log(tempRecord);
-                updateScore();
-                // lock card flip
+    // compare cards to see if score can be updated  
+    function compare(num){
+        // if record not empty
+        if(tempRecord.length>0){
+            let currentRecords = tempRecord;
+            // if flip is effective
+            if( cards[num].flip ){
+                // empty the record
+                
+                const lastRecordNum = currentRecords.pop(1);
+                if(cards[num].name !== cards[lastRecordNum].name ){
+                    currentRecords.push(num);
+                    updateFlip(lastRecordNum);
+                }else{
+                    cardLock([num,lastRecordNum]);
+                    updateScore();
+                }
             }else{
-                updateFlip([prevNum,currentNum]);
+                currentRecords.pop(1);
             }
+            setTempRecord(currentRecords);
+        }else{
+            console.log("record is 0")
+            let currentRecord =tempRecord;
+            currentRecord.push(num);
+            setTempRecord(currentRecord);
+            console.log(tempRecord);
+
         }
+        console.log("update record")
+        console.log(tempRecord);
     }
 
+   
     // trigger when a card is clicked
     const onClickCard=(num)=>{
         // if card not locked
         if(!cards[num].lock){
             // flip card and change card status
             updateFlip(num);
-            // if flip is effective
-            if( cards[num].flip ){
-                console.log("flip"+num);
-                // update flip record list 
-                let tempRecordNum = tempRecord;
-                tempRecordNum.push(num);
-                setTempRecord(tempRecordNum);
-                // update score
-                console.log("add record");
-                console.log(tempRecordNum);
-                if(tempRecord.length>1){
-                    checkScore();
-                }
-
-                const result = checkGame();
-                if(result){
-                    // go back to stop game
-                    stopTimer();
-                    setTempRecord([]);
-                    console.log(cards);
-                    resetBoard(boardSize);
-                }
-            }
+            console.log("flip card"+num);
+            // compare and update record
+            compare(num);
+            
+            // const result = checkGame();
+            // if(result){
+            //     // go back to stop game
+            //     stopTimer();
+            //     setTempRecord([]);
+            //     clearCards();
+            //     console.log(cards);
+            //     resetBoard(boardSize);
+            // }
+            
         }
         
     }
