@@ -35,6 +35,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "homepage": "./"
+||||||| 7c3a80a
+  }
+=======
+  },
+  "homepage": "https://ray-matrix.github.io/flipgame/"
+>>>>>>> 524621c2cba7531ba860c017367a5c4b4ad88620
 }
