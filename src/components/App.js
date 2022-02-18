@@ -1,11 +1,11 @@
-import Game from './Game';
-import '../css/style.css';
+import Game from "./Game";
+import "../css/style.scss";
 
 function App() {
   return (
     <div>
-      <h1 className="game-title">The Classic MeMmmm Game</h1>
-      <Game/>
+      <h1 className="game-title">Wish Cards</h1>
+      <Game />
     </div>
   );
 }
