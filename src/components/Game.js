@@ -10,7 +10,9 @@ const Game = () => {
   }
 
   useEffect(() => {
-    status ? setChances(chance - 1) : setChances(5);
+    if (!status) {
+      setChances(5);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 

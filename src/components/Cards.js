@@ -36,7 +36,7 @@ const Cards = (props) => {
       flip: true,
       content: cardPicked[0].content,
     };
-
+    updateChances();
     setCards(tempCards);
     setCurrentCard(cardPickedStatus);
   }
@@ -72,7 +72,6 @@ const Cards = (props) => {
       flip: false,
       content: "",
     });
-    updateChances();
   };
 
   useEffect(() => {
@@ -120,7 +119,7 @@ const Cards = (props) => {
         type="button"
         disabled={!currentCard.flip || chance > 0 || showPickedCards}
       >
-        Check My Pick
+        Check My Wish
       </button>
     </div>
   );

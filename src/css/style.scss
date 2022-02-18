@@ -2,7 +2,7 @@ $varible-width: 90vw;
 $primary-color: #f16a70;
 $secondary-color: #8cdcda;
 $disable-color: #747373;
-
+$defalt-color: #222222;
 @font-face {
   font-family: "neuropol";
   src: url("fonts/neuropol.woff") format("woff"),
@@ -86,6 +86,7 @@ h4 {
   &__button {
     font-family: inherit;
     background-color: $secondary-color;
+    color: $defalt-color;
     border: none;
     border-radius: 5px;
     text-align: center;
