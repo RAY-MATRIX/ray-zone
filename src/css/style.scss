@@ -28,8 +28,8 @@ h4 {
   margin-bottom: 20px;
 }
 
-#root > div,
-#root > div > div {
+.game,
+.game > h1 + div {
   font-family: "neuropol", sans-serif;
   font-size: 1rem;
   min-height: 100vh;
@@ -56,8 +56,8 @@ h4 {
   color: #4d4d4d;
 }
 
-#root > div > div {
-  min-height: calc(100vh - 78px);
+.game > h1 + div {
+  min-height: calc(100vh - 162px);
   padding-top: 20px;
 }
 
@@ -228,4 +228,11 @@ h4 {
     border: 1px dashed;
     padding: 40px 20px;
   }
+}
+
+.copyright {
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  padding: 10px;
 }

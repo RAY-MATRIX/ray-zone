@@ -4,16 +4,17 @@ const Cards = (props) => {
   const { status, updateChances, chance } = props;
 
   const allCardPool = [
-    { name: "Small Wish", content: "5 Minutes Massage" },
     { name: "Small Wish", content: "10 Minutes Massage" },
     { name: "Small Wish", content: "15 Minutes Massage" },
+    { name: "Small Wish", content: "20 Minutes Massage" },
     { name: "Small Wish", content: "30 Minutes Massage" },
-    { name: "Big Wish", content: "Whole Body Massage" },
-    { name: "Big Wish", content: "Wash Hair For You" },
-    { name: "Big Wish", content: "ggg" },
-    { name: "Super Big Wish", content: "hhh" },
-    { name: "Super Big Wish", content: "Twice One Day" },
-    { name: "Untimate JackPot", content: "A Real Wish" },
+    { name: "Big Wish", content: "Body Massage x 1 hour" },
+    { name: "Big Wish", content: "Wash Hair x 1 times" },
+    { name: "Big Wish", content: "Head Massage x 2 times" },
+    { name: "Gift", content: "Anything worth up to $1000" },
+    { name: "Super Big Wish", content: "hhh Anytime x 1 times" },
+    { name: "Untimate JackPot", content: "A Real Wish Saved for later" },
+    { name: "Double Reward", content: "Next Wish x 2" },
   ];
   const [cards, setCards] = useState(allCardPool);
   const [currentCard, setCurrentCard] = useState({
@@ -102,6 +103,7 @@ const Cards = (props) => {
   return (
     <div className="game-board__content">
       <div className={`card-body ${showPickedCards ? "card-list" : ""}`}>
+        {showPickedCards ? <span>Happy Birthday, Darling!!! </span> : ""}
         {showPickedCards ? pickedCardsList : generateCard(currentCard)}
       </div>
 
