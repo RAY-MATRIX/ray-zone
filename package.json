@@ -1,5 +1,5 @@
 {
-  "name": "game",
+  "name": "pick-a-wish",
   "version": "0.1.0",
   "homepage": "https://ray-matrix.github.io/Wish-cards",
   "private": true,
@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "prettier": "2.7.1"
   }
 }
