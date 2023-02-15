@@ -23,7 +23,7 @@ const Game = (props) => {
 
   return (
     <div>
-      {console.log(chances)}
+      {/* {console.log(chances)} */}
       <div className="game-stats">
         <div className="game-stats__score">
           <div className="game-stats__score--label">Cards Left:</div>
