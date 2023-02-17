@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Wish-cards/static/css/main.fc359b99.chunk.css",
-    "main.js": "/Wish-cards/static/js/main.75880080.chunk.js",
-    "main.js.map": "/Wish-cards/static/js/main.75880080.chunk.js.map",
+    "main.js": "/Wish-cards/static/js/main.a18280ed.chunk.js",
+    "main.js.map": "/Wish-cards/static/js/main.a18280ed.chunk.js.map",
     "runtime-main.js": "/Wish-cards/static/js/runtime-main.f6076d64.js",
     "runtime-main.js.map": "/Wish-cards/static/js/runtime-main.f6076d64.js.map",
     "static/js/2.40db65ab.chunk.js": "/Wish-cards/static/js/2.40db65ab.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.f6076d64.js",
     "static/js/2.40db65ab.chunk.js",
     "static/css/main.fc359b99.chunk.css",
-    "static/js/main.75880080.chunk.js"
+    "static/js/main.a18280ed.chunk.js"
   ]
 }
