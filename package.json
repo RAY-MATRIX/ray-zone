@@ -1,7 +1,7 @@
 {
   "name": "pick-a-wish",
   "version": "0.1.0",
-  "homepage": "https://ray-matrix.github.io/Wish-cards",
+  "homepage": "https://ray-matrix.github.io",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
