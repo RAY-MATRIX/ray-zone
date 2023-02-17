@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Wish-cards/static/css/main.fc359b99.chunk.css",
-    "main.js": "/Wish-cards/static/js/main.a18280ed.chunk.js",
-    "main.js.map": "/Wish-cards/static/js/main.a18280ed.chunk.js.map",
-    "runtime-main.js": "/Wish-cards/static/js/runtime-main.f6076d64.js",
-    "runtime-main.js.map": "/Wish-cards/static/js/runtime-main.f6076d64.js.map",
-    "static/js/2.40db65ab.chunk.js": "/Wish-cards/static/js/2.40db65ab.chunk.js",
-    "static/js/2.40db65ab.chunk.js.map": "/Wish-cards/static/js/2.40db65ab.chunk.js.map",
-    "index.html": "/Wish-cards/index.html",
-    "static/css/main.fc359b99.chunk.css.map": "/Wish-cards/static/css/main.fc359b99.chunk.css.map",
-    "static/js/2.40db65ab.chunk.js.LICENSE.txt": "/Wish-cards/static/js/2.40db65ab.chunk.js.LICENSE.txt",
-    "static/media/style.scss": "/Wish-cards/static/media/neuropol.fbb9ba70.ttf"
+    "main.css": "/static/css/main.1ecced3d.chunk.css",
+    "main.js": "/static/js/main.a18280ed.chunk.js",
+    "main.js.map": "/static/js/main.a18280ed.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.55e0733c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.55e0733c.js.map",
+    "static/js/2.40db65ab.chunk.js": "/static/js/2.40db65ab.chunk.js",
+    "static/js/2.40db65ab.chunk.js.map": "/static/js/2.40db65ab.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.1ecced3d.chunk.css.map": "/static/css/main.1ecced3d.chunk.css.map",
+    "static/js/2.40db65ab.chunk.js.LICENSE.txt": "/static/js/2.40db65ab.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "/static/media/neuropol.fbb9ba70.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.f6076d64.js",
+    "static/js/runtime-main.55e0733c.js",
     "static/js/2.40db65ab.chunk.js",
-    "static/css/main.fc359b99.chunk.css",
+    "static/css/main.1ecced3d.chunk.css",
     "static/js/main.a18280ed.chunk.js"
   ]
 }
