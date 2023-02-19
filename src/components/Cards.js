@@ -8,12 +8,12 @@ const Cards = (props) => {
     { name: "Small Wish", content: "10 Minutes Massage" },
     { name: "Small Wish", content: "15 Minutes Massage" },
     { name: "Small Wish", content: "20 Minutes Massage" },
-    { name: "Big Wish", content: "leg Massage x 0.5 hour" },
+    { name: "Big Wish", content: "leg Massage x 0.5 hour x 2" },
     { name: "Big Wish", content: "Jellycat x 2" },
     { name: "Big Wish", content: "head Massage x 0.5 hour x 2" },
     { name: "Gift", content: "Anything worth up to $500" },
     { name: "Super Big Wish", content: "Anything worth up to $1000" },
-    { name: "Untimate JackPot", content: "A Real Wish Saved in 2023" },
+    { name: "Untimate JackPot", content: "A Real Wish in 2023" },
     { name: "Double Reward", content: "Next Wish x 2" },
   ];
   const [cards, setCards] = useState(allCardPool);
