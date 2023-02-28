@@ -32,7 +32,6 @@ h4 {
 .game > h1 + div {
   font-family: "neuropol", sans-serif;
   font-size: 1rem;
-  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,21 +42,12 @@ h4 {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#eaf9f8),
-    to(#8cdcda)
-  );
-  background: -webkit-linear-gradient(#eaf9f8, #8cdcda);
-  background: -o-linear-gradient(#eaf9f8, #8cdcda);
-  background: linear-gradient(#eaf9f8, #8cdcda);
+
+
   color: #4d4d4d;
 }
 
 .game > h1 + div {
-  min-height: calc(100vh - 162px);
   padding-top: 20px;
 }
 
@@ -230,9 +220,3 @@ h4 {
   }
 }
 
-.copyright {
-  font-size: 1rem;
-  line-height: 2rem;
-  text-align: center;
-  padding: 10px;
-}
