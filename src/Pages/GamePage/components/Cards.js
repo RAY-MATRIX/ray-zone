@@ -1,29 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Cards = (props) => {
   const { status, updateChances, chance } = props;
 
-  const allCardPool = [
-    { name: "Tiny Wish", content: "5 Minutes Massage" },
-    { name: "Small Wish", content: "10 Minutes Massage" },
-    { name: "Small Wish", content: "15 Minutes Massage" },
-    { name: "Small Wish", content: "20 Minutes Massage" },
-    { name: "Big Wish", content: "leg Massage x 0.5 hour x 2" },
-    { name: "Big Wish", content: "Jellycat x 2" },
-    { name: "Big Wish", content: "head Massage x 0.5 hour x 2" },
-    { name: "Gift", content: "Anything worth up to $500" },
-    { name: "Super Big Wish", content: "Anything worth up to $1000" },
-    { name: "Untimate JackPot", content: "A Real Wish in 2023" },
-    { name: "Double Reward", content: "Next Wish x 2" },
-  ];
+  const allCardPool = useSelector((state) => state.cards);
+  // const allCardPool = [
+  //   { name: 'Tiny Wish', content: '5 Minutes Massage' },
+  //   { name: 'Small Wish', content: '10 Minutes Massage' },
+  //   { name: 'Small Wish', content: '15 Minutes Massage' },
+  //   { name: 'Small Wish', content: '20 Minutes Massage' },
+  //   { name: 'Big Wish', content: 'leg Massage x 0.5 hour x 2' },
+  //   { name: 'Big Wish', content: 'Jellycat x 2' },
+  //   { name: 'Big Wish', content: 'head Massage x 0.5 hour x 2' },
+  //   { name: 'Gift', content: 'Anything worth up to $500' },
+  //   { name: 'Super Big Wish', content: 'Anything worth up to $1000' },
+  //   { name: 'Untimate JackPot', content: 'A Real Wish in 2023' },
+  //   { name: 'Double Reward', content: 'Next Wish x 2' },
+  // ];
   const [cards, setCards] = useState(allCardPool);
   const [currentCard, setCurrentCard] = useState({
-    name: "",
+    title: '',
     flip: false,
-    content: "",
+    content: '',
   });
   const [pickedCards, setPickedCards] = useState([]);
   const [showPickedCards, setShowPickedCards] = useState(false);
+
+  const myCards = useSelector((state) => state.cards);
 
   // flip a random card and update rest card pool
   function pickCard() {
@@ -33,13 +37,27 @@ const Cards = (props) => {
       1
     );
     const cardPickedStatus = {
-      name: cardPicked[0].name,
+      title: cardPicked[0].title,
       flip: true,
       content: cardPicked[0].content,
     };
     updateChances();
     setCards(tempCards);
     setCurrentCard(cardPickedStatus);
+  }
+
+  function shuffle(cards) {
+    let cardPool = [];
+    for (let i = 0; i < cards.length; i++) {
+      for (let j = 0; j < cards[i].quantity; j++) {
+        cardPool.push(cards[i]);
+      }
+    }
+
+    for (let i = cardPool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cardPool[i], cardPool[j]] = [cardPool[j], cardPool[i]];
+    }
   }
 
   // trigger when a card is flipped
@@ -52,13 +70,13 @@ const Cards = (props) => {
 
   // single card content
   const generateCard = (newCard) => {
-    const flipClass = newCard.flip && status ? "card--flipped" : "";
+    const flipClass = newCard.flip && status ? 'card--flipped' : '';
     return (
       <div className={`card ${flipClass}`} onClick={onClickCard}>
         <div className="card__face card__face--front"></div>
         <div className="card__face card__face--back">
           <div className="card__content">
-            <h4>{currentCard.name}</h4>
+            <h4>{currentCard.title}</h4>
             <p>{currentCard.content}</p>
           </div>
         </div>
@@ -69,14 +87,14 @@ const Cards = (props) => {
   const nextCardClick = () => {
     setCurrentCard({
       ...currentCard,
-      name: "",
+      title: '',
       flip: false,
-      content: "",
+      content: '',
     });
   };
 
   useEffect(() => {
-    if (currentCard.name) {
+    if (currentCard.title) {
       setPickedCards([...pickedCards, currentCard]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,7 +103,7 @@ const Cards = (props) => {
   useEffect(() => {
     // reset cards when game reset
     if (!status) {
-      setCurrentCard({ ...currentCard, name: "", flip: false, content: "" });
+      setCurrentCard({ ...currentCard, title: '', flip: false, content: '' });
       setCards(allCardPool);
       setPickedCards([]);
       setShowPickedCards(false);
@@ -95,15 +113,15 @@ const Cards = (props) => {
 
   const pickedCardsList = pickedCards?.map((pickedCard, index) => (
     <div className="card-list__picked" key={index}>
-      <h6>{pickedCard.name}</h6>
+      <h6>{pickedCard.title}</h6>
       <p>{pickedCard.content}</p>
     </div>
   ));
-
+  console.log(myCards, 'mycards');
   return (
     <div className="game-board__content">
-      <div className={`card-body ${showPickedCards ? "card-list" : ""}`}>
-        {showPickedCards ? <span>Happy Birthday, Darling!!! </span> : ""}
+      <div className={`card-body ${showPickedCards ? 'card-list' : ''}`}>
+        {showPickedCards ? <span>Happy Birthday, Darling!!! </span> : ''}
         {showPickedCards ? pickedCardsList : generateCard(currentCard)}
       </div>
 

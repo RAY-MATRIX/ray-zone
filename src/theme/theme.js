@@ -18,6 +18,9 @@ const theme = createTheme({
     purple: {
       main: '#8675A9',
     },
+    red: {
+      main: '#EE6983',
+    },
     pink: {
       main: '#EFBBCF',
     },
@@ -25,7 +28,7 @@ const theme = createTheme({
       main: '#C3AED6',
     },
     dark: {
-      main: '#261b3d3b',
+      main: '#816c96',
     },
     success: {
       main: '#f16a70',

@@ -1,5 +1,6 @@
 import { styled } from '@mui/system';
 import { Box } from '@mui/material';
+import { UserDisplay } from '../Login/UserDisplay';
 
 const BodyContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -20,6 +21,13 @@ const Container = styled(Box)({
   justifyContent: 'center',
 });
 
+const HeaderContainer = styled(Box)({
+  fontSize: '1rem',
+  lineHeight: '2rem',
+  padding: '10px',
+  color: '#fff',
+});
+
 const FooterContainer = styled(Box)({
   fontSize: '1rem',
   lineHeight: '2rem',
@@ -27,12 +35,14 @@ const FooterContainer = styled(Box)({
   padding: '10px',
   color: '#fff',
 });
-
 export default function Layout({ children }) {
   const year = new Date().getFullYear();
 
   return (
     <BodyContainer>
+      <HeaderContainer>
+        <UserDisplay />
+      </HeaderContainer>
       <Container>{children}</Container>
       <FooterContainer>
         Copyright © {year} <br /> Designed for Ashely Zheng
