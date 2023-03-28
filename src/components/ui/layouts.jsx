@@ -1,6 +1,7 @@
 import { styled } from '@mui/system';
 import { Box } from '@mui/material';
 import { UserDisplay } from '../Login/UserDisplay';
+import { useSelector } from 'react-redux';
 
 const BodyContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -37,12 +38,11 @@ const FooterContainer = styled(Box)({
 });
 export default function Layout({ children }) {
   const year = new Date().getFullYear();
+  const user = useSelector((state) => state.users);
 
   return (
     <BodyContainer>
-      <HeaderContainer>
-        <UserDisplay />
-      </HeaderContainer>
+      <HeaderContainer>{user && <UserDisplay />}</HeaderContainer>
       <Container>{children}</Container>
       <FooterContainer>
         Copyright © {year} <br /> Designed for Ashely Zheng

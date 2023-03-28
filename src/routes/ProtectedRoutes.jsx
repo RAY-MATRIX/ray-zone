@@ -1,15 +1,22 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CreateCardsPage from '../Pages/CreateCardsPage';
-import GamePage from '../Pages/GamePage';
+import CreateCardPage from '../Pages/CreateCardPage';
+import CreateGamePage from '../Pages/CreateGamePage';
+import GamesPage from '../Pages/GamesPage';
+import CardsPage from '../Pages/CardsPage';
+
 import HomePage from '../Pages/HomePage';
+import GamePage from '../Pages/GamePage';
 
 const ProtectedRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/games" element={<GamesPage />} />
         <Route exact path="/game" element={<GamePage />} />
-        <Route exact path="/createcards" element={<CreateCardsPage />} />
+        <Route exact path="/cards" element={<CardsPage />} />
+        <Route exact path="/cards/create" element={<CreateCardPage />} />
+        <Route exact path="/games/create" element={<CreateGamePage />} />
       </Routes>
     </BrowserRouter>
   );

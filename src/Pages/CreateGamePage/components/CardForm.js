@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { cardsSaved, resetState } from '../../../store/cards/cardsSlice';
 import CardRow from './CardRow';
 
 const CardForm = () => {
   const initialCards = useSelector((state) => state.cards);
-  const [cards, setCards] = useState([...initialCards]);
+  const [cards, setCards] = useState(initialCards);
   const [latestId, setLatestId] = useState(cards.length);
+  const dispatch = useDispatch();
 
   const addCard = () => {
     setCards([
@@ -20,10 +22,6 @@ const CardForm = () => {
     setCards(updatedCards);
   };
 
-  const submitForm = () => {
-    alert(JSON.stringify(cards));
-  };
-
   const updateCards = (card) => {
     const updatedCards = cards.map((item) => {
       if (item.id === card.id) {
@@ -32,6 +30,18 @@ const CardForm = () => {
       return item;
     });
     setCards(updatedCards);
+  };
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    alert(JSON.stringify(cards));
+    dispatch(cardsSaved(cards));
+    console.log('save');
+  };
+
+  const resetForm = (e) => {
+    console.log('reset');
+    dispatch(resetState());
   };
 
   console.log('all cards', cards);
@@ -65,6 +75,9 @@ const CardForm = () => {
         </button>
         <button type="submit" onClick={submitForm}>
           Submit
+        </button>
+        <button type="button" onClick={resetForm}>
+          reset
         </button>
       </form>
     </>

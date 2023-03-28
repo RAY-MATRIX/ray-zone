@@ -60,6 +60,42 @@ const Cards = (props) => {
     }
   }
 
+  function pickName(namesWithWeights) {
+    const totalWeight = namesWithWeights.reduce(
+      (acc, { weight }) => acc + weight,
+      0
+    );
+    const randNum = Math.random() * totalWeight;
+    let weightSum = 0;
+    for (let j = 0; j < namesWithWeights.length; j++) {
+      weightSum += namesWithWeights[j].weight;
+      if (randNum < weightSum) {
+        const pickedName = namesWithWeights[j].name;
+        namesWithWeights.splice(j, 1);
+        return pickedName;
+      }
+    }
+
+    return null; // no name was picked
+  }
+
+  const namesWithWeights = [
+    { name: 'John', weight: 1 },
+    { name: 'Sarah', weight: 2 },
+    { name: 'Michael', weight: 3 },
+    { name: 'Emily', weight: 2 },
+    { name: 'David', weight: 1 },
+  ];
+
+  const pickedName = pickName(namesWithWeights);
+  console.log(`Name picked: ${pickedName}`);
+
+  // Remove the last picked name from the array in the next round
+  namesWithWeights.splice(
+    namesWithWeights.findIndex((item) => item.name === pickedName),
+    1
+  );
+
   // trigger when a card is flipped
   // work if card not flipped yet and the game is running
   const onClickCard = () => {

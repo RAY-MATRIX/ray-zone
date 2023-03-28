@@ -22,6 +22,7 @@ const CardRow = ({ cardStored, removeCard, updateCards }) => {
       }, delayTime);
     }
     return () => {
+      console.log('call return');
       if (timer) {
         clearTimeout(timer);
       }

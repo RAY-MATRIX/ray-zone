@@ -2,6 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './user/userSlice';
 import cardsReducer from './cards/cardsSlice';
+import gameReducer from './game/gameSlice';
 
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
@@ -16,6 +17,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   cards: cardsReducer,
+  game: gameReducer,
+
   //   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
@@ -28,3 +31,4 @@ export const store = configureStore({
   //   middleware: (getDefaultMiddleware) =>
   //     getDefaultMiddleware().concat(apiSlice.middleware),
 });
+store.dispatch({ type: 'RESET' });

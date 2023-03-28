@@ -220,3 +220,28 @@ h4 {
   }
 }
 
+.card-preview{
+  height: 40vw;
+  width: 32vw;
+  min-height: 375px;
+  min-width: 310px;
+  max-height: 420px;
+  max-width: 350px;
+  margin-bottom: 30px;
+  &>*{
+    padding-top: 0;
+    height: 100%;
+    width:100%;
+    .card-body{
+      height:100%;
+      h4{
+        font-size: 1.4rem;
+        margin-bottom:10px;
+      }
+      p{
+        font-size: 1.2rem;
+        overflow: hidden;
+      }
+    }
+  }
+}
