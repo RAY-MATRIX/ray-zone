@@ -15,10 +15,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  cards: cardsReducer,
-  game: gameReducer,
-
+  // user: userReducer,
+  // cards: cardsReducer,
+  // game: gameReducer,
   //   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
@@ -31,4 +30,3 @@ export const store = configureStore({
   //   middleware: (getDefaultMiddleware) =>
   //     getDefaultMiddleware().concat(apiSlice.middleware),
 });
-store.dispatch({ type: 'RESET' });

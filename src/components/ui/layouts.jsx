@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const BodyContainer = styled(Box)(({ theme }) => ({
   width: '100%',
   margin: '0 auto',
-  height: '100vh',
+  minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
   background: `linear-gradient(${theme.palette.pink.main}, ${theme.palette.purple.main} 60%)`,
