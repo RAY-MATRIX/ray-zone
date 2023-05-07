@@ -15,9 +15,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  // user: userReducer,
-  // cards: cardsReducer,
-  // game: gameReducer,
+  user: userReducer,
+  cards: cardsReducer,
+  game: gameReducer,
   //   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
@@ -27,6 +27,9 @@ export const store = configureStore({
   reducer,
   devTools: process.env.NODE_ENV !== 'production',
 
-  //   middleware: (getDefaultMiddleware) =>
-  //     getDefaultMiddleware().concat(apiSlice.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
+store.dispatch({ type: 'RESET' });

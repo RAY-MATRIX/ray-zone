@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CreateCardPage from '../Pages/CreateCardPage';
-import CreateGamePage from '../Pages/CreateGamePage';
-import GamesPage from '../Pages/GamesPage';
-import CardsPage from '../Pages/CardsPage';
+// import CreateCardPage from '../Pages/CreateCardPage';
+// import CreateGamePage from '../Pages/CreateGamePage';
+// import GamesPage from '../Pages/GamesPage';
+// import CardsPage from '../Pages/CardsPage';
 
 // import HomePage from '../Pages/HomePage';
 import GamePage from '../Pages/GamePage';

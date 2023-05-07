@@ -46,19 +46,19 @@ const Cards = (props) => {
     setCurrentCard(cardPickedStatus);
   }
 
-  function shuffle(cards) {
-    let cardPool = [];
-    for (let i = 0; i < cards.length; i++) {
-      for (let j = 0; j < cards[i].quantity; j++) {
-        cardPool.push(cards[i]);
-      }
-    }
+  // function shuffle(cards) {
+  //   let cardPool = [];
+  //   for (let i = 0; i < cards.length; i++) {
+  //     for (let j = 0; j < cards[i].quantity; j++) {
+  //       cardPool.push(cards[i]);
+  //     }
+  //   }
 
-    for (let i = cardPool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [cardPool[i], cardPool[j]] = [cardPool[j], cardPool[i]];
-    }
-  }
+  //   for (let i = cardPool.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [cardPool[i], cardPool[j]] = [cardPool[j], cardPool[i]];
+  //   }
+  // }
 
   function pickName(namesWithWeights) {
     const totalWeight = namesWithWeights.reduce(

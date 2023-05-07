@@ -45,7 +45,7 @@ export default function Layout({ children }) {
       <HeaderContainer>{user && <UserDisplay />}</HeaderContainer>
       <Container>{children}</Container>
       <FooterContainer>
-        Copyright © {year} <br /> Designed for Ashely Zheng
+        Copyright © {year} <br /> Designed By Ray
       </FooterContainer>
     </BodyContainer>
   );

@@ -34,7 +34,7 @@ const theme = createTheme({
       main: '#f16a70',
     },
     white: {
-      default: '#fff',
+      main: '#fff',
     },
   },
   typography: {
