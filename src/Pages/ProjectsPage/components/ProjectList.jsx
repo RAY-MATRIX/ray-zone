@@ -12,6 +12,8 @@ const ProjectListContainer = styled('ul')(({ theme }) => ({
     justifyContent: 'space-between',
     columnGap: '30px',
     textDecoration: 'none',
+    color: `${theme.palette.peach.main}`,
+
     '&:hover,&:active': {
       textDecoration: 'underline',
       color: `${theme.palette.white.main}`,
