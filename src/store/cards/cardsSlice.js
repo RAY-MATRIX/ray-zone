@@ -2,19 +2,29 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
   {
-    id: 0,
-    title: 'First Card',
-    content: 'this is the 1 card',
+    id: '1',
+    title: 'Card 1',
+    content: 'This is card 1',
   },
   {
-    id: 1,
-    title: 'second Card',
-    content: 'this is the 2 card',
+    id: '2',
+    title: 'Card 2',
+    content: 'This is card 2',
   },
   {
-    id: 2,
-    title: 'third Card',
-    content: 'this is the 3 card',
+    id: '3',
+    title: 'Card 3',
+    content: 'This is card 3',
+  },
+  {
+    id: '4',
+    title: 'Card 4',
+    content: 'This is card 4',
+  },
+  {
+    id: '5',
+    title: 'Card 5',
+    content: 'This is card 5',
   },
 ];
 
@@ -22,10 +32,9 @@ const cardsSlice = createSlice({
   name: 'cards',
   initialState,
   reducers: {
-    cardsSaved(state, action) {
+    saveCard(state, action) {
       return action.payload;
     },
-
     // cardsSaved: (state, action) => action.payload,
     resetState: (state) => initialState,
     // resetState(state, action) {
@@ -34,6 +43,6 @@ const cardsSlice = createSlice({
     // },
   },
 });
-export const { cardsSaved, resetState } = cardsSlice.actions;
+export const { saveCard, resetState } = cardsSlice.actions;
 
 export default cardsSlice.reducer;

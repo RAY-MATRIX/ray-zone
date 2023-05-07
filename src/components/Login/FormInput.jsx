@@ -12,7 +12,7 @@ const AuthenticationInput = styled(InputBase)(({ theme }) => ({
     color: '#fff',
     background: 'transparent',
     '&:focus': {
-      caretColor: `${theme.palette.red.main}`,
+      caretColor: `${theme.palette.red}`,
     },
     '&::placeholder': {
       opacity: '1',
@@ -32,13 +32,13 @@ const ErrorFormHelperText = styled(FormHelperText)(({ theme }) => ({
 }));
 
 const FormInput = (props) => {
-  const { formProps, inputName, placeholder } = props;
+  const { formProps, inputName, inputType, placeholder } = props;
   const { values, errors, touched, handleChange, handleBlur } = formProps;
 
   return (
     <FormControl variant="standard" sx={{ width: '100%' }}>
       <AuthenticationInput
-        type={inputName}
+        type={inputType || 'name'}
         name={inputName}
         value={values[inputName]}
         placeholder={placeholder || inputName}

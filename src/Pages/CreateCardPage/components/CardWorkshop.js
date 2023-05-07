@@ -9,7 +9,7 @@ const CardWorkshop = () => {
     if (isSaving) {
       return; // Don't save if already saving
     }
-    // setIsSaving(true);
+    setIsSaving(true);
     alert(JSON.stringify(card));
   };
 

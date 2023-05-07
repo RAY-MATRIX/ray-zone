@@ -32,10 +32,7 @@ const Cards = (props) => {
   // flip a random card and update rest card pool
   function pickCard() {
     const tempCards = cards;
-    const cardPicked = tempCards.splice(
-      Math.floor(Math.random() * tempCards.length),
-      1
-    );
+    const cardPicked = tempCards.splice(Math.floor(Math.random() * tempCards.length), 1);
     const cardPickedStatus = {
       title: cardPicked[0].title,
       flip: true,
@@ -46,25 +43,22 @@ const Cards = (props) => {
     setCurrentCard(cardPickedStatus);
   }
 
-  function shuffle(cards) {
-    let cardPool = [];
-    for (let i = 0; i < cards.length; i++) {
-      for (let j = 0; j < cards[i].quantity; j++) {
-        cardPool.push(cards[i]);
-      }
-    }
+  // function shuffle(cards) {
+  //   let cardPool = [];
+  //   for (let i = 0; i < cards.length; i++) {
+  //     for (let j = 0; j < cards[i].quantity; j++) {
+  //       cardPool.push(cards[i]);
+  //     }
+  //   }
 
-    for (let i = cardPool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [cardPool[i], cardPool[j]] = [cardPool[j], cardPool[i]];
-    }
-  }
+  //   for (let i = cardPool.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [cardPool[i], cardPool[j]] = [cardPool[j], cardPool[i]];
+  //   }
+  // }
 
   function pickName(namesWithWeights) {
-    const totalWeight = namesWithWeights.reduce(
-      (acc, { weight }) => acc + weight,
-      0
-    );
+    const totalWeight = namesWithWeights.reduce((acc, { weight }) => acc + weight, 0);
     const randNum = Math.random() * totalWeight;
     let weightSum = 0;
     for (let j = 0; j < namesWithWeights.length; j++) {

@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 import FormInput from '../../../components/Login/FormInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { gameNameUpdate } from '../../../store/game/gameSlice';
+import { gameNameSchema } from '../../../schemas/game.request';
 
 const FormBody = styled('div')(({ theme }) => ({
   border: `1px solid ${theme.palette.peach.main}`,
@@ -34,18 +35,27 @@ const FormFooter = styled(Box)(({ theme }) => ({
   },
 }));
 
+const validateSchema = (values) => {
+  const errors = {};
+
+  const valid = gameNameSchema.validate(values, { abortEarly: false });
+  if (valid.error) {
+    valid.error.details.forEach((err) => {
+      errors[err.path] = err.message;
+    });
+  }
+  return errors;
+};
+
 const NameForm = ({ updateStage }) => {
   const dispatch = useDispatch();
-  const gameName = useSelector((state) => state.game.title);
+  const { gameName } = useSelector((state) => state.game);
 
   const submitForm = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values.name);
-      dispatch(gameNameUpdate(values.name));
-      updateStage(1);
-      setSubmitting(false);
-    }, 400);
+    alert(JSON.stringify(values, null, 2));
+    dispatch(gameNameUpdate(values.name));
+    setSubmitting(false);
+    updateStage();
   };
 
   return (
@@ -53,7 +63,7 @@ const NameForm = ({ updateStage }) => {
       initialValues={{
         name: gameName,
       }}
-      // validate={validateSchema}
+      validate={validateSchema}
       onSubmit={submitForm}
       validateOnChange={false}
       validateOnBlur={false}
@@ -62,9 +72,10 @@ const NameForm = ({ updateStage }) => {
         <form onSubmit={formProps.handleSubmit}>
           <FormBody>
             <FormInput
-              formProps={formProps}
+              id="gameName"
               inputName="name"
               placeholder="Name your game"
+              formProps={formProps}
             />
           </FormBody>
 

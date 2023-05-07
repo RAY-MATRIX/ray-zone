@@ -1,12 +1,12 @@
 import { styled } from '@mui/system';
 import { Box } from '@mui/material';
-import { UserDisplay } from '../Login/UserDisplay';
-import { useSelector } from 'react-redux';
+import Header from '../Header/Header';
+import { Outlet } from 'react-router-dom';
 
 const BodyContainer = styled(Box)(({ theme }) => ({
   width: '100%',
   margin: '0 auto',
-  height: '100vh',
+  minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
   background: `linear-gradient(${theme.palette.pink.main}, ${theme.palette.purple.main} 60%)`,
@@ -22,13 +22,6 @@ const Container = styled(Box)({
   justifyContent: 'center',
 });
 
-const HeaderContainer = styled(Box)({
-  fontSize: '1rem',
-  lineHeight: '2rem',
-  padding: '10px',
-  color: '#fff',
-});
-
 const FooterContainer = styled(Box)({
   fontSize: '1rem',
   lineHeight: '2rem',
@@ -38,12 +31,13 @@ const FooterContainer = styled(Box)({
 });
 export default function Layout({ children }) {
   const year = new Date().getFullYear();
-  const user = useSelector((state) => state.users);
 
   return (
     <BodyContainer>
-      <HeaderContainer>{user && <UserDisplay />}</HeaderContainer>
-      <Container>{children}</Container>
+      <Header />
+      <Container>
+        <Outlet />
+      </Container>
       <FooterContainer>
         Copyright © {year} <br /> Designed for Ashely Zheng
       </FooterContainer>
