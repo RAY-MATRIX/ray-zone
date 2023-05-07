@@ -18,31 +18,31 @@ const ProjectSubTitle = styled('h2')(({ theme }) => ({
 
 const ProjectsPage = () => {
   const websites = [
-    { name: 'Clenergy', url: 'https://www.clenergy.com/' },
+    { name: 'Clenergy Company', url: 'https://www.clenergy.com.au/' },
     { name: 'ZHONG HONG Company', url: 'https://www.zh-et.cn/en/' },
     { name: 'BANG XIN Company', url: 'https://www.bxsemi.com/en/' },
-    { name: 'Brand Trigram', url: 'https://brandtrigram.com/' },
+    { name: 'Brand Trigram Company', url: 'https://brandtrigram.com/' },
     { name: 'Big man Trailer', url: 'https://bigmantrailer.com.au/' },
     { name: 'Capstone Caravans', url: 'https://capstonecaravans.com.au/' },
-    { name: 'RVBarn', url: 'https://rvbarn.com.au/' },
+    { name: 'RVBarn Company', url: 'https://rvbarn.com.au/' },
     { name: 'Mying Toolbox', url: 'https://myingtoolbox.com.au/' },
     { name: 'Maptco Fasteners', url: 'https://maptco.com.au/shop/' },
     { name: 'Ahli Shop', url: 'https://ahlishop.com/' },
   ];
 
-  const projects = [
-    {
-      name: 'CoffeeTopia',
-      url: 'https://www.coffeetopia.com.au/',
-    },
-  ];
+  // const projects = [
+  //   {
+  //     name: 'CoffeeTopia',
+  //     url: 'https://www.coffeetopia.com.au/',
+  //   },
+  // ];
   return (
     <ProjectsContainer>
       <ProjectsTitle>Portfolio</ProjectsTitle>
       <ProjectSubTitle>Websites</ProjectSubTitle>
       <ProjectList projects={websites} />
-      <ProjectSubTitle>React Apps</ProjectSubTitle>
-      <ProjectList projects={projects} />
+      {/* <ProjectSubTitle>React Apps</ProjectSubTitle>
+      <ProjectList projects={projects} /> */}
     </ProjectsContainer>
   );
 };
