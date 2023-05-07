@@ -12,11 +12,12 @@ const ProjectListContainer = styled('ul')(({ theme }) => ({
     justifyContent: 'space-between',
     columnGap: '30px',
     textDecoration: 'none',
-    color: `${theme.palette.peach.main}`,
+    color: `${theme.palette.white.main}`,
 
-    '&:hover,&:active': {
+    '&:hover, &:active, &:focus-visible': {
       textDecoration: 'underline',
-      color: `${theme.palette.white.main}`,
+      color: `${theme.palette.peach.main}`,
+      outline: 'none',
     },
     [theme.breakpoints.down('sm')]: {
       fontSize: '1.125rem',
