@@ -3,11 +3,11 @@ import CreateCardPage from '../Pages/CreateCardPage';
 import CreateGamePage from '../Pages/CreateGamePage';
 import GamesPage from '../Pages/GamesPage';
 import CardsPage from '../Pages/CardsPage';
-
 import HomePage from '../Pages/HomePage';
 import GamePage from '../Pages/GamePage';
 import TestPage from '../Pages/TestPage/TestPage';
 import Layout from '../components/ui/Layout';
+import ProjectsPage from '../Pages/ProjectsPage';
 
 const ProtectedRoutes = () => {
   // const { isLogin } = useContext(AppContext);
@@ -23,6 +23,7 @@ const ProtectedRoutes = () => {
           <Route exact path="/cards/create" element={<CreateCardPage />} />
           <Route exact path="/games/create" element={<CreateGamePage />} />
           <Route exact path="/test" element={<TestPage />} />
+          <Route exact path="/projects" element={<ProjectsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

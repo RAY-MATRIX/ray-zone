@@ -39,7 +39,7 @@ export default function Layout({ children }) {
         <Outlet />
       </Container>
       <FooterContainer>
-        Copyright © {year} <br /> Designed for Ashely Zheng
+        Copyright © {year} <br /> Designed By Ray
       </FooterContainer>
     </BodyContainer>
   );

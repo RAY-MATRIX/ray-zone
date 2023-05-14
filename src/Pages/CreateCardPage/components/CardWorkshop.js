@@ -6,8 +6,9 @@ const CardWorkshop = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+    // Don't save if already saving
     if (isSaving) {
-      return; // Don't save if already saving
+      return;
     }
     setIsSaving(true);
     alert(JSON.stringify(card));
