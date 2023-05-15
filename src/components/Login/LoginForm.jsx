@@ -3,9 +3,11 @@ import { styled } from '@mui/material/styles';
 import { Box, Button } from '@mui/material';
 import { loginSchema } from '../../schemas/auth.request';
 import { Formik } from 'formik';
-// import { AppContext } from '../../context/ContextProvider';
 import FormInput from './FormInput';
-// import { useLoginMutation } from '../../store/api/authApi';
+import { useLoginMutation } from '../../store/api/authApi';
+import { setUser } from '../../store/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const FormContainer = styled(Box)({
   width: '100vw',
@@ -51,7 +53,10 @@ const LinkButton = styled('a')({
   // textDecoration: 'none',
   color: '#fff',
 });
-
+const ErrorMessage = styled('p')(({ theme }) => ({
+  color: `${theme.palette.peach.main}`,
+  marginBottom: '10px',
+}));
 const validateSchema = (values) => {
   const errors = {};
   const valid = loginSchema.validate(values, { abortEarly: false });
@@ -64,32 +69,29 @@ const validateSchema = (values) => {
 };
 
 const LoginForm = () => {
-  // const { islogin, setIsLogin } = useContext(AppContext);
+  const [login, { isLoading, error }] = useLoginMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // const [
-  //   login,
-  //   {
-  //     data: loginData,
-  //     isSuccess: isLoginSuccess,
-  //     isError: isLoginError,
-  //     error: loginError,
-  //   },
-  // ] = useLoginMutation();
-
-  const submitForm = async (values) => {
-    alert(JSON.stringify(values, null, 2));
-    console.log('submit', values);
-
-    // await login(values);
-    // setIsLogin(true);
+  const submitForm = async (value) => {
+    try {
+      const result = await login(value);
+      if (result && !result.error) {
+        dispatch(setUser(result.data));
+        handleLogin();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  // const handleLogin = () => {
-  //   setIsLogin(true);
-  // };
+  const handleLogin = () => {
+    navigate('/games');
+  };
 
   return (
     <FormContainer>
+      {error && <ErrorMessage>{error.data.error}</ErrorMessage>}
       <Formik
         initialValues={{
           email: '',
@@ -108,7 +110,9 @@ const LoginForm = () => {
             </FormBody>
 
             <FormFooter>
-              <Button type="submit">Login</Button>
+              <Button type="submit" disabled={isLoading}>
+                Login
+              </Button>
             </FormFooter>
           </form>
         )}

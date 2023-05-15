@@ -2,7 +2,7 @@ import { Link } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
-import userSlice from '../../store/user/userSlice';
+import userSlice from '../../store/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const UserContainer = styled('div')(({ theme }) => ({
