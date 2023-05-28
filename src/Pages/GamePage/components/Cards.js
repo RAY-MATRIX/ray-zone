@@ -32,7 +32,10 @@ const Cards = (props) => {
   // flip a random card and update rest card pool
   function pickCard() {
     const tempCards = cards;
-    const cardPicked = tempCards.splice(Math.floor(Math.random() * tempCards.length), 1);
+    const cardPicked = tempCards.splice(
+      Math.floor(Math.random() * tempCards.length),
+      1
+    );
     const cardPickedStatus = {
       title: cardPicked[0].title,
       flip: true,
@@ -58,7 +61,10 @@ const Cards = (props) => {
   // }
 
   function pickName(namesWithWeights) {
-    const totalWeight = namesWithWeights.reduce((acc, { weight }) => acc + weight, 0);
+    const totalWeight = namesWithWeights.reduce(
+      (acc, { weight }) => acc + weight,
+      0
+    );
     const randNum = Math.random() * totalWeight;
     let weightSum = 0;
     for (let j = 0; j < namesWithWeights.length; j++) {
@@ -133,7 +139,12 @@ const Cards = (props) => {
   useEffect(() => {
     // reset cards when game reset
     if (!status) {
-      setCurrentCard({ ...currentCard, title: '', flip: false, content: '' });
+      setCurrentCard({
+        ...currentCard,
+        title: '',
+        flip: false,
+        content: '',
+      });
       setCards(allCardPool);
       setPickedCards([]);
       setShowPickedCards(false);
@@ -150,9 +161,17 @@ const Cards = (props) => {
   console.log(myCards, 'mycards');
   return (
     <div className="game-board__content">
-      <div className={`card-body ${showPickedCards ? 'card-list' : ''}`}>
-        {showPickedCards ? <span>Happy Birthday, Darling!!! </span> : ''}
-        {showPickedCards ? pickedCardsList : generateCard(currentCard)}
+      <div
+        className={`card-body ${showPickedCards ? 'card-list' : ''}`}
+      >
+        {showPickedCards ? (
+          <span>Happy Birthday, Darling!!! </span>
+        ) : (
+          ''
+        )}
+        {showPickedCards
+          ? pickedCardsList
+          : generateCard(currentCard)}
       </div>
 
       <button

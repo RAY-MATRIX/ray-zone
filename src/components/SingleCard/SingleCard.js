@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
 const CardContainer = styled(Box)({
   width: '25%',
@@ -52,23 +52,42 @@ const CardContent = styled('div')({
 });
 
 const TopContent = styled('div')(({ theme }) => ({
+  p: {
+    display: 'none',
+  },
   '.card--selected &': {
     border: `1px solid ${theme.palette.peach.main}`,
     flex: '1 auto',
+    p: {
+      display: 'block',
+    },
   },
 }));
 
-const CardList = ({ card, handleCardClick, selectedCards }) => {
+const SingleCard = ({ card, handleCardClick, selectedCards }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const isInForm = selectedCards !== undefined;
   const handleClick = (event) => {
-    handleCardClick(card);
+    if (isInForm) {
+      handleCardClick(card);
+    } else {
+      setIsFlipped(!isFlipped);
+    }
   };
-  const isSelected = selectedCards.some((item) => item.id === card.id);
+  const isSelected = isInForm
+    ? selectedCards.some((item) => item.id === card.id)
+    : isFlipped;
+
   const flipClass = isSelected ? 'card--selected' : '';
 
   return (
     <>
       <CardContainer>
-        <CardContentContainer className={`card ${flipClass}`} onClick={handleClick}>
+        <CardContentContainer
+          className={`${flipClass}`}
+          onClick={handleClick}
+        >
           <CardImageContainer>
             <img src="" alt={card.title} />
           </CardImageContainer>
@@ -84,4 +103,4 @@ const CardList = ({ card, handleCardClick, selectedCards }) => {
     </>
   );
 };
-export default CardList;
+export default SingleCard;

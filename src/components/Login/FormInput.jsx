@@ -1,5 +1,9 @@
 import { styled } from '@mui/material/styles';
-import { FormControl, InputBase, FormHelperText } from '@mui/material';
+import {
+  FormControl,
+  InputBase,
+  FormHelperText,
+} from '@mui/material';
 
 const AuthenticationInput = styled(InputBase)(({ theme }) => ({
   background: 'transparent',
@@ -33,7 +37,8 @@ const ErrorFormHelperText = styled(FormHelperText)(({ theme }) => ({
 
 const FormInput = (props) => {
   const { formProps, inputName, inputType, placeholder } = props;
-  const { values, errors, touched, handleChange, handleBlur } = formProps;
+  const { values, errors, touched, handleChange, handleBlur } =
+    formProps;
 
   return (
     <FormControl variant="standard" sx={{ width: '100%' }}>
@@ -47,7 +52,9 @@ const FormInput = (props) => {
         autoComplete={`current-${inputName}`}
       />
       {touched[inputName] && errors[inputName] && (
-        <ErrorFormHelperText error>{errors[inputName]}</ErrorFormHelperText>
+        <ErrorFormHelperText error>
+          {errors[inputName]}
+        </ErrorFormHelperText>
       )}
     </FormControl>
   );

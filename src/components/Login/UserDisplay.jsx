@@ -1,8 +1,8 @@
 import { Link } from '@mui/material';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
-import userSlice from '../../store/auth/authSlice';
+import { clearUser } from '../../store/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const UserContainer = styled('div')(({ theme }) => ({
@@ -35,30 +35,33 @@ const UserLink = styled(Link)(({ theme }) => ({
 
 export const UserDisplay = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  // const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = { email: '123' };
 
   const handleLogOut = () => {
-    // dispatch(userSlice.actions.clearUser());
+    dispatch(clearUser());
     navigate('/');
   };
 
   return (
     <>
-      {user && (
+      {user.isLoggedIn ? (
         <UserContainer onMouseLeave={() => setShowDropdown(false)}>
           <UserLink onMouseEnter={() => setShowDropdown(true)}>
-            Hello, {user.email}
+            Hello, {user.role}
           </UserLink>
           {showDropdown && (
             <DropdownList>
               <DropdownItem>
-                <UserLink onClick={handleLogOut}>Log out</UserLink>
+                <UserLink onClick={handleLogOut}>Log Out</UserLink>
               </DropdownItem>
             </DropdownList>
           )}
+        </UserContainer>
+      ) : (
+        <UserContainer>
+          <UserLink href="/login">Sign In</UserLink>
         </UserContainer>
       )}
     </>

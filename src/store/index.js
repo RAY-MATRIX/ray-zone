@@ -1,7 +1,6 @@
 import { apiSlice } from './api/apiSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './auth/authSlice';
-import cardsReducer from './cards/cardsSlice';
 import gameReducer from './game/gameSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
@@ -14,8 +13,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  cards: cardsReducer,
+  auth: userReducer,
   game: gameReducer,
   [apiSlice.reducerPath]: apiSlice.reducer,
 });

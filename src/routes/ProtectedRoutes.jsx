@@ -11,26 +11,30 @@ import Layout from '../components/ui/Layout';
 import ProjectsPage from '../Pages/ProjectsPage';
 import LoginPage from '../Pages/LoginPage';
 import NotFoundPage from '../Pages/NotFoundPage';
+import PrivateRoute from './PrivateRoute';
 
 const ProtectedRoutes = () => {
-  // const { isLogin } = ;
-
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          {/* {!isLogin && <Route path="/" element={<HomePage />} />}
-          {isLogin && <Route path="/" element={<Navigate to="/games" replace />} />} */}
           <Route path="/" element={<HomePage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="test" element={<TestPage />} />
 
-          <Route exact path="/login" element={<LoginPage />} />
-          <Route exact path="/games" element={<GamesPage />} />
-          <Route exact path="/game/:id" element={<GamePage />} />
-          <Route exact path="/cards" element={<CardsPage />} />
-          <Route exact path="/cards/create" element={<CreateCardPage />} />
-          <Route exact path="/games/create" element={<CreateGamePage />} />
-          <Route exact path="/test" element={<TestPage />} />
-          <Route exact path="/projects" element={<ProjectsPage />} />
+          <Route path="games" element={<PrivateRoute />}>
+            <Route path="" element={<GamesPage />} />
+            <Route path=":id" element={<GamePage />} />
+            <Route path="create" element={<CreateGamePage />} />
+          </Route>
+
+          <Route path="cards" element={<PrivateRoute />}>
+            <Route path="" element={<CardsPage />} />
+            {/* <Route exact path=":id" element={<CardPage />} /> */}
+            <Route path="/cards/create" element={<CreateCardPage />} />
+          </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

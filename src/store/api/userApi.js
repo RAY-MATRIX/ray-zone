@@ -4,7 +4,17 @@ const userApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUserInfo: builder.query({
       query: (_id) => `/users/${_id}`,
-      providesTags: ['UserProfile'],
+      providesTags: ['UserDetails'],
+    }),
+
+    getUserGames: builder.query({
+      query: (_id) => `/users/${_id}/games`,
+      providesTags: ['UserGames'],
+    }),
+
+    getUserCards: builder.query({
+      query: (_id) => `/users/${_id}/cards`,
+      providesTags: ['UserCards'],
     }),
 
     resetPassword: builder.mutation({
@@ -15,7 +25,7 @@ const userApi = apiSlice.injectEndpoints({
           password,
         },
       }),
-      invalidatesTags: ['UserProfile'],
+      invalidatesTags: ['UserDetails'],
     }),
 
     sendResetEmail: builder.mutation({
@@ -36,7 +46,7 @@ const userApi = apiSlice.injectEndpoints({
           password,
         },
       }),
-      invalidatesTags: ['UserProfile'],
+      invalidatesTags: ['UserDetails'],
     }),
   }),
   overrideExisting: false,
@@ -44,6 +54,8 @@ const userApi = apiSlice.injectEndpoints({
 
 export const {
   useGetUserInfoQuery,
+  useGetUserGamesQuery,
+  useGetUserCardsQuery,
   useResetPasswordMutation,
   useSendResetEmailMutation,
   useEmailResetPasswordMutation,

@@ -86,7 +86,8 @@ const LoginForm = () => {
   };
 
   const handleLogin = () => {
-    navigate('/games');
+    // navigate('/games');
+    // navigate('/cards');
   };
 
   return (

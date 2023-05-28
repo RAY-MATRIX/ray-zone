@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import LoginForm from '../../components/Login/LoginForm';
+import { useSelector } from 'react-redux';
 
 const Container = styled(Box)({
   textAlign: 'center',
@@ -12,10 +13,25 @@ const Title = styled('h1')({
 });
 
 const LoginPage = () => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  console.log('isLoggedIn', isLoggedIn);
+  console.log(
+    'user',
+    useSelector((state) => state.auth)
+  );
+
   return (
     <Container>
-      <Title>Welcome</Title>
-      <LoginForm />
+      {isLoggedIn ? (
+        <>
+          <Title>You have logged in, Do you want to logout?</Title>
+        </>
+      ) : (
+        <>
+          <Title>Welcome</Title>
+          <LoginForm />
+        </>
+      )}
     </Container>
   );
 };

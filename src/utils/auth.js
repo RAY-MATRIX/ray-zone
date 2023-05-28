@@ -3,5 +3,5 @@ export const isAuthenticated = () => {
 };
 
 export const getUser = () => {
-  return localStorage.getItem('user');
+  return localStorage.getItem('auth');
 };

@@ -1,25 +1,27 @@
 import Game from './components/Game';
-import { useLocation, Navigate } from 'react-router-dom';
-import { extractIdFromURL } from '../../utils/common';
-import { DEFAULT_GAME } from '../../utils/contant';
+import { Navigate, useParams } from 'react-router-dom';
+import Loading from '../../components/ui/Loading';
+import { useGetGameInfoQuery } from '../../store/api/gameApi';
 
 const GamePage = () => {
-  const location = useLocation();
-  const id = extractIdFromURL(location.pathname)
-    ? extractIdFromURL(location.pathname)
-    : DEFAULT_GAME;
-
-  // const { data: game, isLoading } = useGetGameInfoQuery(id);
-  // if (isLoading) return <Loading />;
-  // if (!game) return <Navigate to="/notfound" replace />;
+  let params = useParams();
+  const gameId = params.id;
+  const { data: game, isLoading } = useGetGameInfoQuery(gameId);
+  if (isLoading) return <Loading />;
 
   return (
     <div className="game">
-      <h1 className="game-title">Wish Cards</h1>
-      <Game
+      {game ? (
+        <>
+          <h1 className="game-title">Wish Game</h1>
+          {/* <Game
         chances={5}
-        // gameData={game}
-      />
+        gameData={game}
+      /> */}
+        </>
+      ) : (
+        <>Oops, This Game does not exist</>
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { styled } from '@mui/system';
+import { useSelector } from 'react-redux';
 
 const MenuContainer = styled('ul')(({ theme }) => ({
   listStyleType: 'none',
@@ -23,19 +24,27 @@ const MenuItem = styled('a')(({ theme }) => ({
 }));
 
 const UserMenu = () => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   return (
     <MenuContainer>
       <MenuItem href="/" title="Explore games">
         Home
       </MenuItem>
-      <MenuItem href="/games" title="Explore games">
-        Games
-      </MenuItem>
-      <MenuItem href="/cards" title="Explore cards">
-        Cards
-      </MenuItem>
+      {isLoggedIn && (
+        <>
+          {' '}
+          <MenuItem href="/games" title="Explore games">
+            Games
+          </MenuItem>
+          <MenuItem href="/cards" title="Explore cards">
+            Cards
+          </MenuItem>
+        </>
+      )}
+
       <MenuItem href="/projects" title="Explore projects">
-        Projects
+        About
       </MenuItem>
     </MenuContainer>
   );

@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import CardList from './CardList';
 import { styled } from '@mui/material/styles';
 import { Box, Button } from '@mui/material';
-import { selectCard, unselectCard } from '../../../store/game/gameSlice';
-
+import {
+  selectCard,
+  unselectCard,
+} from '../../../store/game/gameSlice';
+import SingleCard from '../../../components/SingleCard';
 const CardListContainer = styled(Box)({
   display: 'flex',
   width: '100%',
@@ -48,10 +50,14 @@ const EmptyCardContainer = styled('div')(({ theme }) => ({
 const CardsSelection = ({ updateStage }) => {
   const dispatch = useDispatch();
   const availableCards = useSelector((state) => state.cards);
-  const selectedCards = useSelector((state) => state.game.gameCardsSelected);
+  const selectedCards = useSelector(
+    (state) => state.game.gameCardsSelected
+  );
 
   const handleCardClick = (card) => {
-    const isSelected = selectedCards.some((item) => item.id === card.id);
+    const isSelected = selectedCards.some(
+      (item) => item.id === card.id
+    );
     if (isSelected) {
       // Remove the card from the selected cards
       dispatch(unselectCard(card));
@@ -78,14 +84,15 @@ const CardsSelection = ({ updateStage }) => {
       <p>Select cards for your game</p>
       {availableCards.length === 0 && (
         <div>
-          There is no cards, <a href="/card/create">add a card now </a>
+          There is no cards,{' '}
+          <a href="/card/create">add a card now </a>
         </div>
       )}
 
       <CardListContainer>
         {availableCards.map((card) => {
           return (
-            <CardList
+            <SingleCard
               card={card}
               key={card.id}
               handleCardClick={handleCardClick}
@@ -100,7 +107,10 @@ const CardsSelection = ({ updateStage }) => {
         </EmptyCardContainer>
       </CardListContainer>
 
-      <NextButton disabled={isNextButtonDisabled} onClick={handleNextClick}>
+      <NextButton
+        disabled={isNextButtonDisabled}
+        onClick={handleNextClick}
+      >
         Next
       </NextButton>
     </>

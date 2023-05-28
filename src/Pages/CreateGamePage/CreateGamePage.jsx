@@ -3,7 +3,6 @@ import NameForm from './components/NameForm';
 import { styled } from '@mui/material/styles';
 import { Box, Button } from '@mui/material';
 import GameCreateBoard from './components/GameCreateBoard';
-// import CardsStock from '../../components/CardsStock';
 import { useSelector } from 'react-redux';
 import CardsSelection from './components/CardSelection';
 
@@ -70,7 +69,9 @@ const CreateGamePage = () => {
       {stage === 3 && (
         <div>
           Your game has been created! Share this link with others:{' '}
-          <a href={gameLink}>{gameLink}</a>
+          <a href={gameLink} title="share link">
+            {gameLink}
+          </a>
         </div>
       )}
     </Container>
