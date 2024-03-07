@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/ray-zone',
+  // basePath: '/ray-zone',
   output: 'export',
   reactStrictMode: true,
 }
