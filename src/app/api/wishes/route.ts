@@ -4,7 +4,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const response = await axios({
     method: 'get',
-    url: `${process.env.NEXT_PUBLIC_WISH_API_URL}/wishes`,
+    url: `${process.env.WISH_API_URL}/wishes`,
   })
 
   const result = response.data
