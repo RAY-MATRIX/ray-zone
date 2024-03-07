@@ -20,19 +20,6 @@ const RootLayout: FC<Props> = ({ children }) => {
     <html lang="en">
       <body className={inter.className}>
         <main>{children}</main>
-        {/* <div className="flex flex-col min-h-[100vh]">
-          <header className="bg-yellow-400">
-            <Container>
-              <Header />
-            </Container>
-          </header>
-          <div className="flex flex-1 flex-col"> {children}</div>
-          <footer>
-            <Container>
-              <Footer />
-            </Container>
-          </footer>
-        </div> */}
       </body>
     </html>
   )

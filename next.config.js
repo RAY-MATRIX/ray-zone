@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/ray-zone',
   output: 'export',
   reactStrictMode: true,
+  env: {
+    WISH_API_URL: process.env.WISH_API_URL,
+  },
 }
 
 module.exports = nextConfig
