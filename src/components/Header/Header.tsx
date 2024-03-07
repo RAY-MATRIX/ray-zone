@@ -14,9 +14,13 @@ const Header: FC<Props> = ({ size }) => {
         { default: ['py-5'], small: ['py-2'] }[size]
       )}>
       <div className="flex max-w-[1280px] justify-between px-0 w-full">
-        <Link href="/">RayZone</Link>
+        <Link href="/" title="homepage">
+          RayZone
+        </Link>
         <div className="flex items-center gap-6">
-          <Link href="/projects">Projects</Link>
+          <Link href="/projects" title="projects page">
+            Projects
+          </Link>
         </div>
       </div>
     </div>
