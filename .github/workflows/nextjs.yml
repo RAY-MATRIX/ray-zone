@@ -52,7 +52,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          npm:'9'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
       - name: Install dependencies
