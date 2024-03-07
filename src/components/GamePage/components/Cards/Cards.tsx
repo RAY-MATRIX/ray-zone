@@ -37,7 +37,9 @@ const Cards: FC<CardsProps> = ({ gameStatus, updateChance, chance }) => {
   const [cards, setCards] = useState<Card[]>([])
   const [pickedCards, setPickedCards] = useState<Card[]>([])
   const [showPickedCards, setShowPickedCards] = useState<boolean>(false)
-  const { data, isLoading } = useSWR(`/api/wishes`, fetcher<Result>)
+  const { data, isLoading } = useSWR(`/api/wishes`, fetcher<Result>, {
+    revalidateOnMount: true,
+  })
 
   useEffect(() => {
     if (currentCard.flip) {
