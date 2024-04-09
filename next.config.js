@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     WISH_API_URL:
-      'https://bnobel00fg.execute-api.ap-southeast-2.amazonaws.com/prod',
+      'https://bnobel00fg.execute-api.ap-southeast-2.amazonaws.com/prod-v1',
   },
 }
 
