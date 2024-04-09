@@ -96,7 +96,7 @@ const Slide: FC<SlideProps> = ({ slide, current, index, handleSlideClick }) => {
         <img
           className="object-fill bg-black w-full h-auto rounded-lg"
           alt={slide.name}
-          src="../images/clenergy.jpg"
+          src={slide.src}
           onLoad={imageLoaded}
         />
         {/* </div> */}

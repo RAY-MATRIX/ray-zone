@@ -7,6 +7,7 @@ import {
   ScanCommand,
   UpdateCommand,
 } from '@aws-sdk/lib-dynamodb'
+import { v4 as uuidv4 } from 'uuid'
 
 const client = new DynamoDBClient({ region: 'ap-southeast-2' })
 const docClient = DynamoDBDocumentClient.from(client)
@@ -56,19 +57,19 @@ async function getWish(id) {
     (response) => {
       if (response.Item) {
         const body = {
-          operation: 'GET',
-          message: 'SUCCESS',
+          Operation: 'GET',
+          Message: 'SUCCESS',
           data: response.Item,
         }
         return buildResponse(200, body)
       }
-      return buildResponse(404, { message: `wish with ${id} is not found` })
+      return buildResponse(404, { Message: `wish with ${id} is not found` })
     },
     (error) => {
       console.error('Get wish failed: ', error)
       const errorBody = {
-        operation: 'GET',
-        message: 'FAILED',
+        Operation: 'GET',
+        Message: 'FAILED',
         Error: error,
       }
       return buildResponse(400, errorBody)
@@ -83,8 +84,8 @@ async function getWishes() {
   })
   const wishes = await scanDynamoRecords(command, [])
   const body = {
-    operation: 'GET',
-    message: 'SUCCESS',
+    Operation: 'GET',
+    Message: 'SUCCESS',
     data: wishes,
   }
   return buildResponse(200, body)
@@ -93,12 +94,12 @@ async function getWishes() {
 // scan the db for multiple items
 async function scanDynamoRecords(command, itemArray) {
   try {
-    const dynamodata = await docClient.send(command)
-    itemArray = itemArray.concat(dynamodata.Items)
-    if (dynamodata.LastEvaluatedKey) {
+    const dynamoData = await docClient.send(command)
+    itemArray = itemArray.concat(dynamoData.Items)
+    if (dynamoData.LastEvaluatedKey) {
       const command = new ScanCommand({
         TableName: dynamodbTableName,
-        ExclusiveStartkey: dynamodata.LastEvaluatedKey,
+        ExclusiveStartkey: dynamoData.LastEvaluatedKey,
       })
       return await scanDynamoRecords(command, itemArray)
     }
@@ -111,25 +112,26 @@ async function scanDynamoRecords(command, itemArray) {
 
 // save a wish
 async function saveWish(requestBody) {
+  const id = uuidv4()
   const command = new PutCommand({
     TableName: dynamodbTableName,
-    Item: requestBody,
+    Item: { ...requestBody, id },
   })
 
   return await docClient.send(command).then(
     (response) => {
       const body = {
-        operation: 'SAVE',
-        message: 'SUCCESS',
-        data: requestBody,
+        Operation: 'SAVE',
+        Message: 'SUCCESS',
+        Item: requestBody,
       }
       return buildResponse(200, body)
     },
     (error) => {
       console.error('Save wish failed ', error)
       const errorBody = {
-        operation: 'SAVE',
-        message: 'FAILED',
+        Operation: 'SAVE',
+        Message: 'FAILED',
         Error: error,
       }
       return buildResponse(400, errorBody)
@@ -162,8 +164,8 @@ async function modifyWish(id, updateValue) {
   return await docClient.send(command).then(
     (response) => {
       const body = {
-        operation: 'UPDATE',
-        message: 'SUCCESS',
+        Operation: 'UPDATE',
+        Message: 'SUCCESS',
         data: response.Attributes,
       }
       return buildResponse(200, body)
@@ -171,8 +173,8 @@ async function modifyWish(id, updateValue) {
     (error) => {
       console.error('Update wish failed: ', error)
       const errorBody = {
-        operation: 'UPDATE',
-        message: 'FAILED',
+        Operation: 'UPDATE',
+        Message: 'FAILED',
         Error: error,
       }
       return buildResponse(400, errorBody)
@@ -194,19 +196,19 @@ async function deleteWish(id) {
     (response) => {
       if (response.Attributes) {
         const body = {
-          operation: 'DELETE',
-          message: 'SUCCESS',
+          Operation: 'DELETE',
+          Message: 'SUCCESS',
           Item: response.Attributes,
         }
         return buildResponse(200, body)
       }
-      return buildResponse(404, { message: `wish with ${id} is not found` })
+      return buildResponse(404, { Message: `wish with ${id} is not found` })
     },
     (error) => {
       console.error('Delete wish failed: ', error)
       const errorBody = {
-        operation: 'DELETE',
-        message: 'FAILED',
+        Operation: 'DELETE',
+        Message: 'FAILED',
         Error: error,
       }
       return buildResponse(400, errorBody)

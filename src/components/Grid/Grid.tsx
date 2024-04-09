@@ -16,8 +16,10 @@ const Grid: FC<Props> = ({ list, setLayout, setCurrent }) => {
           key={slide.id}
           className={classNames(
             ['group h-[200px] w-auto relative border-1 overflow-hidden'],
-            ['rounded-md flex justify-center flex-col align-center'],
-            ['hover:opacity-100 opacity-70 hover:cursor-pointer']
+            [
+              'rounded-md flex justify-center flex-col align-center border-2 border-yellow-300',
+            ],
+            [' hover:cursor-pointer']
           )}
           onClick={() => {
             setLayout()
@@ -26,13 +28,12 @@ const Grid: FC<Props> = ({ list, setLayout, setCurrent }) => {
           <img
             src={slide.src}
             alt={slide.name}
-            className="h-full w-full bg-slate-100"
+            className="h-full w-full bg-slate-100 object-cover group-hover:opacity-100 opacity-30"
           />
           <h4
             className={classNames(
-              ['text-center p-5 max-w-[200px]'],
-              ['mx-auto absolute z-10 left-1/2 translate-x-[-50%] invisible '],
-              ['group-hover:visible']
+              ['text-center p-5 max-w-[200px] font-semibold	'],
+              ['mx-auto absolute z-10 left-1/2 translate-x-[-50%] ']
             )}>
             {slide.name}
           </h4>
